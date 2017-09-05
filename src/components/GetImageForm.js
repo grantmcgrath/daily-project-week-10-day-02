@@ -33,8 +33,8 @@ export default class GetImageForm extends Component {
     let imageUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rove}/photos?sol=${num}&camera=${cam}&api_key=${API_KEY}`;
 
     fetch(imageUrl).then((results) => results.json()).then((data) => {
-      console.log(data);
-      this.setState({rover: "Curiosity", camera: "FHAZ", images: [], sol: ""});
+      console.log(data.photos);
+      this.setState({rover: "Curiosity", camera: "FHAZ", images: data.photos, sol: 0});
     });
   };
 
@@ -52,7 +52,7 @@ export default class GetImageForm extends Component {
 
     return (
       <div>
-        <h1>Some Type of Title</h1>
+        <h1>Mars Rover Photos</h1>
         <form>
 
           <label htmlFor="rover">Rover</label>
@@ -76,7 +76,7 @@ export default class GetImageForm extends Component {
 
         <div>
           <GetImageButton onClick={this.fetchRoverImage}/>
-          <ImageDisplay photo={this.state.photo}/>
+          <ImageDisplay images={this.state.images}/>
         </div>
       </div>
 

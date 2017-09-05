@@ -1,12 +1,10 @@
 import React, {Component} from "react";
 
-export default class GetImageButton extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <button onClick={props.action}>Get Rover Image</button>
-    );
-  }
+
+const GetImageButton = (props) => {
+  return (
+    <button onClick = {props.onClick} type="submit">Get Rover Image</button>
+  );
 }
+
+export default GetImageButton;
